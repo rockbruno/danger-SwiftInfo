@@ -1,9 +1,9 @@
 require File.expand_path("../spec_helper", __FILE__)
 
 module Danger
-  describe Danger::DangerSwiftinfo do
+  describe Danger::DangerSwiftInfo do
     it "should be a plugin" do
-      expect(Danger::DangerSwiftinfo.new(nil)).to be_a Danger::Plugin
+      expect(Danger::DangerSwiftInfo.new(nil)).to be_a Danger::Plugin
     end
     end
   end
