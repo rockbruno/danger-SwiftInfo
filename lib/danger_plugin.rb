@@ -1,0 +1,1 @@
+require "SwiftInfo/plugin"
