@@ -2,30 +2,13 @@
 
 A [Danger](http://danger.systems/) plugin that runs and prints [SwiftInfo](https://github.com/rockbruno/SwiftInfo) results to pull requests.
 
+Requires SwiftInfo 2.3.1 or newer.
+
 ### How does it look?
 
 You can make a Dangerfile that looks through PR metadata, it's fully typed.
 
-```swift
-import Danger
-
-let allSourceFiles = danger.git.modifiedFiles + danger.git.createdFiles
-
-let changelogChanged = allSourceFiles.contains("CHANGELOG.md")
-let sourceChanges = allSourceFiles.first(where: { $0.hasPrefix("Sources") })
-
-if !changelogChanged && sourceChanges != nil {
-  warn("No CHANGELOG entry added.")
-}
-
-
-// You can use these functions to send feedback:
-message("Highlight something in the table")
-warn("Something pretty bad, but not important enough to fail the build")
-fail("Something that must be changed")
-
-markdown("Free-form markdown that goes under the table, so you can do whatever.")
-```
+<img src="https://i.imgur.com/8kvEx5O.png">
 
 ### Installation
 

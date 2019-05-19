@@ -20,8 +20,11 @@ module Danger
         # @return   [void]
         #
         def run(path)
+            message("ok")
             stdout, stderr, status = Open3.capture3(path + " -pullRequest -s")
             message(stdout)
+            message(stderr)
+            message(status)
         end
 
         def self.instance_name
