@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    danger-SwiftInfo (0.0.1)
+    danger-SwiftInfo (0.0.2)
       danger-plugin-api (~> 1.0)
 
 GEM
