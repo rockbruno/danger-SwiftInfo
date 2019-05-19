@@ -52,7 +52,7 @@ def testing_env
   {
     "HAS_JOSH_K_SEAL_OF_APPROVAL" => "true",
     "TRAVIS_PULL_REQUEST" => "800",
-    "TRAVIS_REPO_SLUG" => "artsy/eigen",
+    "TRAVIS_REPO_SLUG" => "rockbruno/danger-SwiftInfo",
     "TRAVIS_COMMIT_RANGE" => "759adcbd0d8f...13c4dc8bb61d",
     "DANGER_GITHUB_API_TOKEN" => "123sbdq54erfsd3422gdfio"
   }

@@ -1,30 +1,27 @@
 require "open3"
 
 module Danger
-  # This is your plugin class. Any attributes or methods you expose here will
-  # be available from within your Dangerfile.
-  #
-  # To be published on the Danger plugins site, you will need to have
-  # the public interface documented. Danger uses [YARD](http://yardoc.org/)
-  # for generating documentation from your plugin source, and you can verify
-  # by running `danger plugins lint` or `bundle exec rake spec`.
-  #
-  # You should replace these comments with a public description of your library.
-  #
-  # @example Ensure people are well warned about merging on Mondays
-  #
-  #          my_plugin.warn_on_mondays
-  #
-  # @see  Bruno Rocha/danger-SwiftInfo
-  # @tags monday, weekends, time, rattata
-  #
-  class DangerSwiftinfo < Plugin
-    # A method that you can call from your Dangerfile
-    # @return   [Array<String>]
+    # Runs SwiftInfo and prints the results to the pull request.
+    # You must have [SwiftInfo](https://github.com/rockbruno/SwiftInfo) installed
+    # somewhere in your project.
+    # You can detect that SwiftInfo is running specifically for Danger
+    # by adding a `if isInPullRequestMode` condition in your Infofile.
+    # You can use it to extract different rules and prevent saving the new output.
+    # @example Run SwiftInfo
     #
-    def report(path)
-      stdout, stderr, status = Open3.capture3(path + " -pullRequest")
-      message(stdout)
+    #          SwiftInfo.run './Pods/SwiftInfo/bin/swiftinfo'
+    #
+    # @see  Bruno Rocha/danger-SwiftInfo
+    # @tags swift, xcode, swiftinfo, ios
+    #
+    class DangerSwiftInfo < Plugin
+        # Run SwiftInfo and print the results to the PR.
+        # @param    [String] path Path to the SwiftInfo binary.
+        # @return   [void]
+        #
+        def run(path)
+            stdout, stderr, status = Open3.capture3(path + " -pullRequest -s")
+            message(stdout)
+        end
     end
-  end
 end
