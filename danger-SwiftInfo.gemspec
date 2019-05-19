@@ -5,7 +5,7 @@ require 'SwiftInfo/gem_version.rb'
 
 Gem::Specification.new do |spec|
   spec.name          = 'danger-SwiftInfo'
-  spec.version       = Swiftinfo::VERSION
+  spec.version       = SwiftInfo::VERSION
   spec.authors       = ['Bruno Rocha']
   spec.email         = ['brunorochaesilva@gmail.com']
   spec.description   = %q{A short description of danger-SwiftInfo.}
@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'danger-plugin-api', '~> 1.0'
 
   # General ruby development
-  spec.add_development_dependency 'bundler', '~> 1.3'
+  spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'rake', '~> 10.0'
 
   # Testing support
@@ -30,7 +30,6 @@ Gem::Specification.new do |spec|
   # Linting code and docs
   spec.add_development_dependency "rubocop"
   spec.add_development_dependency "yard"
-  spec.add_development_dependency "open3"
 
   # Makes testing easy via `bundle exec guard`
   spec.add_development_dependency 'guard', '~> 2.14'
