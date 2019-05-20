@@ -6,12 +6,12 @@ module Danger
     # somewhere in your project.
     # You can detect that SwiftInfo is running specifically for Danger
     # by adding a `if isInPullRequestMode` condition in your Infofile.
-    # You can use it to extract different rules and prevent saving the new output.
+    # You can use this condition to extract different rules and prevent saving the new output.
     # @example Run SwiftInfo
     #
-    #          SwiftInfo.run './Pods/SwiftInfo/bin/swiftinfo'
+    #          swiftinfo.run './Pods/SwiftInfo/bin/swiftinfo'
     #
-    # @see  Bruno Rocha/danger-SwiftInfo
+    # @see  rockbruno/danger-SwiftInfo
     # @tags swift, xcode, swiftinfo, ios
     #
     class DangerSwiftInfo < Plugin
@@ -20,11 +20,10 @@ module Danger
         # @return   [void]
         #
         def run(path)
-            message("ok")
-            stdout, stderr, status = Open3.capture3(path + " -pullRequest -s")
-            message(stdout)
-            message(stderr)
-            message(status)
+            binPath = path
+            output = `#{binPath} -pullRequest -s`
+            html = output.sub("\n", "<br>")
+            message(output)
         end
 
         def self.instance_name

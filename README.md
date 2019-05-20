@@ -6,8 +6,6 @@ Requires SwiftInfo 2.3.1 or newer.
 
 ### How does it look?
 
-You can make a Dangerfile that looks through PR metadata, it's fully typed.
-
 <img src="https://i.imgur.com/8kvEx5O.png">
 
 ### Installation
@@ -24,7 +22,7 @@ To use this plugin, you need to modify both your Dangerfile and your SwiftInfo's
 
 #### Dangerfile
 
-Call `swiftinfo.run` passing the path to your SwiftInfo binary. (inside `Pods` if using CocoaPods, or just `swiftinfo` if Homebrew was used)
+Call `swiftinfo.run` with the path to your SwiftInfo binary as an argument. (inside `Pods` if CocoaPods was used or just `swiftinfo` if Homebrew was used)
 
 ```ruby
 swiftinfo.run './Pods/SwiftInfo/bin/swiftinfo'
@@ -32,16 +30,16 @@ swiftinfo.run './Pods/SwiftInfo/bin/swiftinfo'
 
 #### Infofile
 
-To print the final output to Danger, call `api.print(output)`.
+To print the final output to Danger, call `api.print(output)` from your Infofile.
 
-Note that when ran from this plugin, SwiftInfo will be executed with the `-pullRequest -s` arguments which can be inspected and used as a condition. This logic is abstracted under a `isInPullRequestMode` boolean.
+Note that when ran from this plugin, SwiftInfo will be executed with the `-pullRequest -s` arguments which can be inspected and used as a condition. This logic is abstracted under the `isInPullRequestMode` boolean, which you can use to extract different providers in Danger runs and prevent saving the output, for example.
 
 ```swift
 if isInPullRequestMode {
-	// The specific Danger flow
+    // The specific Danger flow
     api.print(output: output)
 } else {
-	// The regular release flow
+    // The regular release flow
     api.sendToSlack(output: output, webhookUrl: url)
     api.save(output: output)
 }
