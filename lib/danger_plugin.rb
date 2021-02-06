@@ -20,7 +20,7 @@ module Danger
         # @return   [void]
         #
         def run(path)
-            binPath = path + " -s -pullRequest"
+            binPath = path + " -s --pullRequest"
             output = `#{binPath}`
             html = output.sub("\n", "<br>")
             message(output)
